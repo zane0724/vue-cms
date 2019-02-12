@@ -10,9 +10,23 @@ import router from './router'
 // 注册mint-ui
 Vue.use(MintUI)
 
+//导入路由的包
+import VueRouter from 'vue-router'
+//注册路由组件
+Vue.use(VueRouter)
+
+//导入vue-resource
+import VueResource from 'vue-resource'
+//注册vue-resource
+Vue.use(VueResource)
+// 导入自己的router.js路由模块
+// import router from './router/index.js'
+
 //引入mui的样式
 import './lib/mui/css/mui.css'
 
+//引入购物车的字体图标
+import './lib/mui/css/icons-extra.css'
 // css默认样式初始化
 import './styles/common.css'
 Vue.config.productionTip = false
