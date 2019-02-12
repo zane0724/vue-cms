@@ -2,7 +2,6 @@
   <div id="app">
     <!-- header头部 -->
     <mt-header fixed title="Vue项目"></mt-header>
-    <h1>123</h1>
     <!-- 中间的路由 -->
 
     <!-- 底部 -->
