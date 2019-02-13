@@ -19,9 +19,8 @@ Vue.use(VueRouter)
 import VueResource from 'vue-resource'
 //注册vue-resource
 Vue.use(VueResource)
-// 导入自己的router.js路由模块
-// import router from './router/index.js'
-
+//设置请求的跟路径
+Vue.http.options.root = 'http://www.lovegf.cn:8899/api/';
 //引入mui的样式
 import './lib/mui/css/mui.css'
 
