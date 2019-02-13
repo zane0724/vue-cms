@@ -2,8 +2,50 @@
   <div id="app">
     <!-- header头部 -->
     <mt-header fixed title="Vue项目"></mt-header>
+    <transition>
+      <router-view/>
+    </transition>
     <!-- 中间的路由 -->
-
+    <ul class="mui-table-view mui-grid-view mui-grid-9">
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <a href="#">
+          <span class="mui-icon mui-icon-home"></span>
+          <div class="mui-media-body">Home</div>
+        </a>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <a href="#">
+          <span class="mui-icon mui-icon-email">
+            <span class="mui-badge">5</span>
+          </span>
+          <div class="mui-media-body">Email</div>
+        </a>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <a href="#">
+          <span class="mui-icon mui-icon-chatbubble"></span>
+          <div class="mui-media-body">Chat</div>
+        </a>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <a href="#">
+          <span class="mui-icon mui-icon-location"></span>
+          <div class="mui-media-body">location</div>
+        </a>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <a href="#">
+          <span class="mui-icon mui-icon-search"></span>
+          <div class="mui-media-body">Search</div>
+        </a>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <a href="#">
+          <span class="mui-icon mui-icon-phone"></span>
+          <div class="mui-media-body">Phone</div>
+        </a>
+      </li>
+    </ul>
     <!-- 底部 -->
     <nav class="mui-bar mui-bar-tab">
       <router-link class="mui-tab-item" to="/home">
@@ -25,7 +67,6 @@
         <span class="mui-tab-label">搜索</span>
       </router-link>
     </nav>
-    <router-view/>
   </div>
 </template>
 
@@ -39,6 +80,19 @@ export default {
 #app {
   padding-top: 40px;
   padding-bottom: 50px;
+  overflow-x: hidden;
 }
-
+.v-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+  position: absolute;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.5s ease;
+}
 </style>

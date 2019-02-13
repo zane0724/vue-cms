@@ -9,11 +9,11 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {path:'/',rederect:"/homeComponent"},
+    {path:'/',redirect:"/home"},
     {path:'/home',component:homeComponent},
     {path:'/member',component:memberComponent},
     {path:'/shopcar',component:shopcarComponent},
-    {path:'/search',component:searchComponent},
+    {path:'/search',component:searchComponent}
     // {
     //   path: '/',
     //   name: 'HelloWorld',
