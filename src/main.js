@@ -29,7 +29,12 @@ import './lib/mui/css/icons-extra.css'
 // css默认样式初始化
 import './styles/common.css'
 Vue.config.productionTip = false
-
+//导入格式化时间插件
+import moment from 'moment'
+//定义全局过滤器
+Vue.filter('dateFormat',function(datastr,pattern="YYYY-MM-DD HH:mm:ss"){
+  return moment(datastr).format(pattern)
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
