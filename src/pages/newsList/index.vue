@@ -2,7 +2,7 @@
   <div class="newsList-container">
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media" v-for="(item, index) in newsList" :key="index">
-        <router-link to="/newsInfo">
+        <router-link :to="'newsInfo/' + item.id">
           <img class="mui-media-object mui-pull-left" :src="item.img_url">
           <div class="mui-media-body">
             <h1>{{item.title}}</h1>
@@ -30,7 +30,7 @@ export default {
   methods: {
     getNewsList() {
       this.$http.get("getnewslist").then(result=>{
-        console.log(result)
+        // console.log(result)
         this.newsList = result.body.message;
       })
     }
