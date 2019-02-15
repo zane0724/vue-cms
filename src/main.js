@@ -35,6 +35,8 @@ import moment from 'moment'
 Vue.filter('dateFormat',function(datastr,pattern="YYYY-MM-DD HH:mm:ss"){
   return moment(datastr).format(pattern)
 })
+//全局设置post时候表单数据格式
+Vue.http.options.emulateJSON =true;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
