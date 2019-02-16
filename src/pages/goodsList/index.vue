@@ -14,70 +14,7 @@
         </p>
       </div>
     </div>
-    <!-- <div class="goodsItem">
-      <img
-        src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550326817613&di=67bbfde8e654a9f9685b341bf8eef998&imgtype=0&src=http%3A%2F%2Fimg.mp.sohu.com%2Fq_mini%2Cc_zoom%2Cw_640%2Fupload%2F20170702%2F5f63af27300c49e7a21b961b83096518_th.jpg"
-      >
-      <h1 class="title">华为手机国产第一</h1>
-      <div class="info">
-        <p class="price">
-          <span class="newPrice">¥2195</span>
-          <span class="oldPrice">¥2499</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
-    <div class="goodsItem">
-      <img
-        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1009223177,3781080280&fm=26&gp=0.jpg"
-      >
-      <h1 class="title">华为手机国产第一</h1>
-      <div class="info">
-        <p class="price">
-          <span class="newPrice">¥2195</span>
-          <span class="oldPrice">¥2499</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
-    <div class="goodsItem">
-      <img
-        src="https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1550311943&di=7dcb9246b2975fb304ab39b17a02b535&src=http://p.060s.com/2016/03/23/2bd1d49db699ccbeff960592447b486c.jpg"
-      >
-      <h1 class="title">华为手机国产第一和哈按时大大大叔大叔</h1>
-      <div class="info">
-        <p class="price">
-          <span class="newPrice">¥2195</span>
-          <span class="oldPrice">¥2499</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
-    <div class="goodsItem">
-      <img
-        src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550325219062&di=ecd79503e91058493f6604a0621ed260&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201411%2F07%2F20141107164412_v284V.jpeg"
-      >
-      <h1 class="title">华为手机国产第一</h1>
-      <div class="info">
-        <p class="price">
-          <span class="newPrice">¥2195</span>
-          <span class="oldPrice">¥2499</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div> -->
+    <mt-button type="danger" size="large" @click="loadMore">加载更多</mt-button>
   </div>
 </template>
 
@@ -96,8 +33,12 @@ export default {
       getGoodsList(){
           this.$http.get('getgoods?pageindex=' + this.pageIndex).then(result=>{
               console.log(result.body)
-            this.goodsList =result.body.message
+            this.goodsList = this.goodsList.concat(result.body.message) //点击加载更多时调用上一页数据拼接新的数据
           })
+      },
+      loadMore(){
+          this.pageIndex++   //翻页
+          this.getGoodsList()
       }
   }
 };
