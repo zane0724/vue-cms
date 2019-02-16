@@ -8,6 +8,9 @@ import shopcarComponent from '../pages/shopcar'
 import searchComponent from '../pages/search'
 import newsListComponent from '../pages/newsList'
 import newsInfoComponent from '../pages/newsInfo'
+import photoListComponent from '../pages/photoList'
+import goodsListComponent from '../pages/goodsList'
+
 
 
 export default new Router({
@@ -18,7 +21,10 @@ export default new Router({
     {path:'/shopcar',component:shopcarComponent},
     {path:'/search',component:searchComponent},
     {path:'/home/newsList',component:newsListComponent},
-    {path:'/home/newsInfo/:id',component:newsInfoComponent}
+    {path:'/home/newsInfo/:id',component:newsInfoComponent},
+    {path:'/home/photoList',component:photoListComponent},
+    {path:'/home/goodsList',component:goodsListComponent}
+    
     // {
     //   path: '/',
     //   name: 'HelloWorld',
