@@ -1,16 +1,7 @@
 <template>
   <div class="home-container">
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="(item, index) in banners" :key="index">
-        <a :href="item.url">
-          <img :src="item.img">
-        </a>
-      </mt-swipe-item>
-      <!-- <mt-swipe-item>2</mt-swipe-item>
-      <mt-swipe-item>3</mt-swipe-item>-->
-    </mt-swipe>
-    
+    <swiper :banners="banners" ></swiper>
     <!-- 九宫格 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -54,6 +45,8 @@
 </template>
 
 <script>
+import swiper from '@/components/swiper'
+
 export default {
   data() {
     return {
@@ -70,7 +63,11 @@ export default {
         this.banners = result.body.message;
       });
     }
+  },
+  components:{
+      swiper
   }
+
 };
 </script>
 <style lang="less">
@@ -82,14 +79,14 @@ export default {
       height: 100%;
     }
   }
-  .mint-swipe {
-    height: 200px;
-    .mint-swipe-item {
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
+  // .mint-swipe {
+  //   height: 200px;
+  //   .mint-swipe-item {
+  //     img {
+  //       width: 100%;
+  //       height: 100%;
+  //     }
+  //   }
+  // }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="goodsList-container">
-    <div class="goodsItem" v-for="(item, index) in goodsList" :key="index">
+    <div class="goodsItem" v-for="(item, index) in goodsList" :key="index" @click="getGoodsInfo(item.id)">
       <img :src="item.img_url">
       <h1 class="title">{{item.title}}</h1>
       <div class="info">
@@ -23,7 +23,7 @@ export default {
   data() {
     return {
         pageIndex:1,
-        goodsList:[]
+        goodsList:[],
     };
   },
   created(){
@@ -32,14 +32,18 @@ export default {
   methods: {
       getGoodsList(){
           this.$http.get('getgoods?pageindex=' + this.pageIndex).then(result=>{
-              console.log(result.body)
+            //   console.log(result.body)
             this.goodsList = this.goodsList.concat(result.body.message) //点击加载更多时调用上一页数据拼接新的数据
           })
       },
       loadMore(){
           this.pageIndex++   //翻页
           this.getGoodsList()
-      }
+      },
+      getGoodsInfo(id){ //编程式导航  (点击item项传入id)
+          this.$router.push('/home/goodsInfo/'+ id) //编程式导航获取链接字符串方法 
+        //   this.$router.push({path:"/home/goodsInfo/" + id})  //path路径对象方法
+      }  
   }
 };
 </script>
