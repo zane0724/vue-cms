@@ -1,10 +1,11 @@
 <template>
   <div class="goodsInfo-container">
+    <!-- 过渡切换的类名,如果使用一二没有名字的<transition> 则V-是这些类名默认的前缀,多处动画时需写入name,否则会产生动画冲突 -->
       <transition
         @before-enter="beforeEnter"
         @enter="enter"
         @after-enter="afterEnter">
-          <div class="ball" v-show="ballFlag"></div>
+          <div class="ball" ref="ball" v-show="ballFlag"></div>
       </transition>
     <!-- 商品轮播图 -->
     <div class="mui-card">
@@ -62,7 +63,7 @@ export default {
       id: this.$route.params.id,
       Banners: [],
       goodsDetail:{},
-      ballFlag:false
+      ballFlag:false,
     };
   },
   created() {
@@ -93,13 +94,21 @@ export default {
     },
     addToShopCar(){
         this.ballFlag=!this.ballFlag
+        
     },
     beforeEnter(el){
         el.style.transform="translate(0,0)"
     },
     enter(el,done){
+      //小球的位置通过$refs获取dom元素
+        const ballPosition= this.$refs.ball.getBoundingClientRect();
+        //购物车徽标位置
+        const badgePosition=document.getElementById("badge").getBoundingClientRect();
+        // 计算小球移动位置
+        var Xdis = badgePosition.left - ballPosition.left
+        var Ydis = badgePosition.top -ballPosition.top
         el.offsetHeight;
-        el.style.transform="translate(235px,575px)";
+        el.style.transform=`translate(${Xdis}px,${Ydis}px)`;
         el.style.transition="all 1s ease";
         done();
     },
