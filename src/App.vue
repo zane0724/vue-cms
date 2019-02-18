@@ -2,7 +2,7 @@
   <div id="app">
     <!-- header头部 -->
     <mt-header fixed title="Vue项目"></mt-header>
-    <transition>
+    <transition name="App">
       <router-view/>
     </transition>
     <!-- 中间的路由 -->
@@ -43,17 +43,17 @@ export default {
   padding-bottom: 50px;
   overflow-x: hidden;
 }
-.v-enter {
+.App-enter {
   opacity: 0;
   transform: translateX(100%);
 }
-.v-leave-to {
+.App-leave-to {
   opacity: 0;
   transform: translateX(-100%);
   position: absolute;
 }
-.v-enter-active,
-.v-leave-active {
+.App-enter-active,
+.App-leave-active {
   transition: all 0.5s ease;
 }
 .mui-bar-tab .mui-tab-item1.mui-active {

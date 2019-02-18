@@ -1,5 +1,11 @@
 <template>
   <div class="goodsInfo-container">
+      <transition
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter">
+          <div class="ball" v-show="ballFlag"></div>
+      </transition>
     <!-- 商品轮播图 -->
     <div class="mui-card">
       <swiper :banners="Banners"></swiper>
@@ -22,7 +28,7 @@
           </p>
           <p class="btn">
             <button type="button" class="mui-btn mui-btn-primary">立即购买</button>
-            <button type="button" class="mui-btn mui-btn-danger">加入购物车</button>
+            <button type="button" class="mui-btn mui-btn-danger" @click="addToShopCar">加入购物车</button>
           </p>
         </div>
       </div>
@@ -56,6 +62,7 @@ export default {
       id: this.$route.params.id,
       Banners: [],
       goodsDetail:{},
+      ballFlag:false
     };
   },
   created() {
@@ -83,7 +90,23 @@ export default {
     },
     getGoodsComm(id){
         this.$router.push("/home/goodsComment/" +id)
+    },
+    addToShopCar(){
+        this.ballFlag=!this.ballFlag
+    },
+    beforeEnter(el){
+        el.style.transform="translate(0,0)"
+    },
+    enter(el,done){
+        el.offsetHeight;
+        el.style.transform="translate(235px,575px)";
+        el.style.transition="all 1s ease";
+        done();
+    },
+    afterEnter(el){
+        this.ballFlag = !this.ballFlag;
     }
+    
   },
   components: {
     swiper,
@@ -94,6 +117,16 @@ export default {
 
 <style lang="less">
 .goodsInfo-container {
+    .ball{
+        width: 18px;
+        height: 18px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 199;
+        top: 360px;
+        left: 155px;
+    }
   .price {
     .nowPrice {
       color: red;
